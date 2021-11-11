@@ -1,0 +1,27 @@
+.MenuBar-container{
+    background-color:  rgb(63, 60, 60);
+}
+.items {
+    list-style: none;
+    margin-right: 30px;
+    font-size: 22px;
+
+    font-weight: 500;
+    color: rgb(252, 242, 242);
+    cursor: pointer;
+    padding: 5px;
+    text-decoration: none;
+  }
+  .items:hover {
+    color: black;
+  }
+  .explore  {
+    background-color: rgba(255, 68, 0, 0.637) ;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    padding: 10px 10px;
+    color: white;
+    text-align: center;
+  }
+  

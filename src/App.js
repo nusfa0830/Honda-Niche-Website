@@ -1,23 +1,61 @@
 import logo from './logo.svg';
 import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Home from './Component/Home/Home';
+import Products from './Component/Products/Products';
+import LogIn from './Component/LogIn/LogIn';
+import Register from './Component/Register/Register'
+import Review from './Component/Review/Review';
+import PrivateRoute from './Private/PrivateRoute';
+import AuthProvider from './context/AuthProvider';
+import ProductDetails from './Component/ProductDetails/ProductDetails';
+import Purchase from './Component/Purchase/Purchase';
+import Dashboard from './Component/Dashboard/Dashboard';
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <AuthProvider>
+        <Router>
+          <Switch>
+
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            <Route path="/allproducts/:_id" >
+              <ProductDetails></ProductDetails>
+            </Route>
+            <PrivateRoute path="/allproducts">
+              <Products></Products>
+            </PrivateRoute>
+
+
+            <Route path="/review">
+              <Review></Review>
+            </Route>
+            <Route path="/login">
+              <LogIn></LogIn>
+            </Route>
+            <Route path="/register">
+              <Register></Register>
+            </Route>
+            <Route path="/">
+              <Home></Home>
+            </Route>
+
+          </Switch>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }
