@@ -28,7 +28,7 @@ const LogIn = () => {
     }
 
     const handleLoginSubmit = e => {
-        logInUser(loginData.email, loginData.password, location, history);
+        logInUser(loginData.email, loginData.password, loginData.name, location, history);
         alert("logged in");
         e.preventDefault();
     }

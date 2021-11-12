@@ -76,11 +76,24 @@ const useFirebase = () => {
 
 
     // login WITH  EMAIL
-    const logInUser = (email, password, location, history) => {
+    const logInUser = (email, password, name, location, history) => {
 
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+
+                const newUser = { email, displayName: name };
+                setUser(newUser);
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                }).then(() => {
+                    // Profile updated!
+                    // ...
+                }).catch((error) => {
+                    // An error occurred
+                    // ...
+                });
+
                 const destination = history.push(location.state?.from || "/home");
                 history.replace(destination);
                 setAuthError('');
@@ -131,24 +144,8 @@ const useFirebase = () => {
 
     // observer user state
 
-    // useEffect(() => {
 
-    //     const unsubscribe = onAuthStateChanged(auth, (user) => {
-    //         if (user) {
-    //             setUser(user);
-    //             getIdToken(user)
-    //                 .then(idToken => {
-    //                     setToken(idToken);
-    //                 })
-    //         } else {
-    //             setUser({})
-    //         }
-    //         setIsLoading(false)
 
-    //     });
-    //     return () => unsubscribe;
-
-    // }, [])
 
 
     useEffect(() => {

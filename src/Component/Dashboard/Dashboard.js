@@ -8,9 +8,9 @@ import MyOrder from '../MyOrder/MyOrder';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddProduct from '../AddProduct/AddProduct';
 import ManageProduct from '../ManageProduct/ManageProduct';
-import ManageOrder from '../ManageOrder/ManageOrder';
 import "./Dashboard.css"
 import Payment from '../Payment/Payment';
+import ManageAllOrder from '../ManageAllOrder/ManageAllOrder';
 const Dashboard = () => {
 
     const [isAdmin, setIsAdmin] = useState(false);
@@ -29,7 +29,7 @@ const Dashboard = () => {
                     setIsAdmin(false);
                 }
             });
-    }, [user?.email]);
+    }, [user?.email, isAdmin]);
 
 
     return (
@@ -65,17 +65,17 @@ const Dashboard = () => {
                                     <h5 className="pt-2">Admin Dashboard</h5>
 
                                     <Link to={`${url}/addProduct`}>
-                                        <li className="dashboard-menu">Add Service</li>
+                                        <li className="dashboard-menu">Add Product</li>
                                     </Link>
 
                                     <Link to={`${url}/makeAdmin`}>
                                         <li className="dashboard-menu">Make Admin</li>
                                     </Link>
                                     <Link to={`${url}/manageProduct`}>
-                                        <li className="dashboard-menu">Manage Service</li>
+                                        <li className="dashboard-menu">Manage Products</li>
                                     </Link>
                                     <Link to={`${url}/manageOrder`}>
-                                        <li className="dashboard-menu">Manage Service</li>
+                                        <li className="dashboard-menu">Manage ALL Orders</li>
                                     </Link>
                                 </div>)}
 
@@ -113,7 +113,7 @@ const Dashboard = () => {
                                     <ManageProduct></ManageProduct>
                                 </Route>
                                 <Route exact path={`${path}/manageOrder`}>
-                                    <ManageOrder></ManageOrder>
+                                    <ManageAllOrder></ManageAllOrder>
                                 </Route>
                             </Switch>
                         </div>
