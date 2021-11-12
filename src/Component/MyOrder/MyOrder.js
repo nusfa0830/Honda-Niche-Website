@@ -13,6 +13,7 @@ const MyOrder = () => {
             .then((res) => res.json())
             .then(data => setMyorders(data))
     }, [email, myOrders])
+    
     return (
         <div>
             <div className="pt-5 px-5" >

@@ -220,7 +220,8 @@ const useFirebase = () => {
         logout,
         signInWithGoogle,
         setAuthError,
-        authError
+        authError,
+        updateProfile
     }
 
 

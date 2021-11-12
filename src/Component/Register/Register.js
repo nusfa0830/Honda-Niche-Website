@@ -22,6 +22,7 @@ const Register = () => {
         const value = e.target.value;
         const newLoginData = { ...loginData };
         newLoginData[field] = value;
+
         setLoginData(newLoginData);
     }
 
@@ -30,8 +31,8 @@ const Register = () => {
             alert('password didnot match');
             return
         }
-
-        registerUser(loginData.email, loginData.password, loginData.name, history, location)
+        // console.log(loginData.name)
+        registerUser(loginData.email, loginData.password, loginData.name, history);
         e.preventDefault();
     }
 
