@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import useAuth from "../../hooks/useAuth"
 import Navigation from '../Shared/Navigarion/Navigation';
 import { useForm } from "react-hook-form";
+import useFirebase from '../../hooks/useFirebase';
 
 
 const ProductDetails = () => {
@@ -14,10 +15,11 @@ const ProductDetails = () => {
     } = useForm();
 
     const { _id } = useParams();
-    const { user } = useAuth();
+    const { user } = useFirebase();
     const [product, setProduct] = useState({});
 
     const onSubmit = (data) => {
+        data.email = user.email;
         data.status = "pending"
         fetch("http://localhost:5000/addOrders", {
             method: "POST",
@@ -50,22 +52,24 @@ const ProductDetails = () => {
                     </div>
                     <div className="col-md-6">
                         <form onSubmit={handleSubmit(onSubmit)}>
+                            <input
+                                {...register("userName")}
+                                placeholder="Client Name"
+                                defaultValue={user?.displayName}
+                                className="p-2 m-2 w-100 input-field"
+                            />
 
                             <input
-                                {...register("name")}
-                                placeholder="Name"
-                                defaultValue={product?.name}
-                                className="p-2 m-2 w-100 input-field"
-                            /><input
                                 {...register("email")}
                                 placeholder="Email"
                                 defaultValue={user?.email}
                                 className="p-2 m-2 w-100 input-field"
                             />
+
                             <input
-                                {...register("userName")}
-                                placeholder="Client Name"
-                                defaultValue={user?.name}
+                                {...register("name")}
+                                placeholder="Name"
+                                defaultValue={product?.name}
                                 className="p-2 m-2 w-100 input-field"
                             />
 

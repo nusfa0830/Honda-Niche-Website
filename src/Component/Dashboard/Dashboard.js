@@ -43,28 +43,26 @@ const Dashboard = () => {
                     <div className="row">
                         <div className="col-md-3 ">
                             <div className="dashboard">
-                                <h5>Dashboard</h5>
-                                <Link to={`${url}`}>
-                                    <li className="dashboard-menu "></li>
-                                </Link>
+                                {!isAdmin && (<div>  <h5>Dashboard</h5>
+                                    <Link to={`${url}`}>
+                                        <li className="dashboard-menu "></li>
+                                    </Link>
 
-                                <Link to={`${url}/pay`}>
-                                    <li className="dashboard-menu ">Payment</li>
-                                </Link>
+                                    <Link to={`${url}/pay`}>
+                                        <li className="dashboard-menu ">Payment</li>
+                                    </Link>
 
-                                <Link to={`${url}/myorders`}>
-                                    <li className="dashboard-menu ">My order</li>
-                                </Link>
+                                    <Link to={`${url}/myorders`}>
+                                        <li className="dashboard-menu ">My order</li>
+                                    </Link>
 
-                                <Link to={`${url}/review`}>
-                                    <li className="dashboard-menu ">Review</li>
-                                </Link>
-
+                                    <Link to={`${url}/review`}>
+                                        <li className="dashboard-menu ">Review</li>
+                                    </Link>
+                                </div>)}
 
                                 {isAdmin && (<div className="admin-dashboard">
-                                    <h5>Admin Dashboard</h5>
-                                    <li className="dashboard-menu mt-2">Orders list</li>
-
+                                    <h5 className="pt-2">Admin Dashboard</h5>
 
                                     <Link to={`${url}/addProduct`}>
                                         <li className="dashboard-menu">Add Service</li>
@@ -80,6 +78,8 @@ const Dashboard = () => {
                                         <li className="dashboard-menu">Manage Service</li>
                                     </Link>
                                 </div>)}
+
+
                                 <div className="pt-3" ><Button onClick={logout} variant="danger">
 
                                     LogOut

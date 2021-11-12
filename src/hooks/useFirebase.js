@@ -17,27 +17,13 @@ const useFirebase = () => {
 
 
     // for registation
-    // const registerUser = (email, password, history, location, name) => {
-    //     setIsLoading(true);
-    //     createUserWithEmailAndPassword(auth, email, password)
-    //         .then((result) => {
-    //             console.log(result.user);
-    //             setAuthError('');
-    //         })
-    //         .catch((error) => {
-    //             const errorMessage = error.message;
-    //             setAuthError(error.message);
-    //         })
-    //         .finally(() => setIsLoading(false));
-    // }
-
-
 
     const registerUser = (email, password, name, history, location) => {
 
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredentia) => {
+            .then((result) => {
+                hanldeUserInfoRegister(result.user.email);
                 const newUser = { email, displayName: name };
                 setUser(newUser);
                 updateProfile(auth.currentUser, {
@@ -62,19 +48,30 @@ const useFirebase = () => {
     }
 
 
-
-
-
-    const handleUserRegister = (email, password) => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-                console.log(result.user);
-
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-            });
+    const hanldeUserInfoRegister = (email) => {
+        fetch("http://localhost:5000/addUserInfo", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ email }),
+        })
+            .then((res) => res.json())
+            .then((result) => console.log(result));
     };
+
+
+
+
+
+    // const handleUserRegister = (email, password) => {
+    //     createUserWithEmailAndPassword(auth, email, password)
+    //         .then((result) => {
+    //             console.log(result.user);
+
+    //         })
+    //         .catch((error) => {
+    //             const errorMessage = error.message;
+    //         });
+    // };
 
 
 
@@ -211,7 +208,7 @@ const useFirebase = () => {
 
     return {
         user,
-        handleUserRegister,
+
         token,
         isLoading,
         setIsLoading,
