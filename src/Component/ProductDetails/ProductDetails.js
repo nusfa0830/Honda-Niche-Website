@@ -6,11 +6,11 @@ import { useForm } from "react-hook-form";
 import useFirebase from '../../hooks/useFirebase';
 
 
+
 const ProductDetails = () => {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm();
 
@@ -18,7 +18,7 @@ const ProductDetails = () => {
     const { user } = useFirebase();
     const [product, setProduct] = useState({});
 
-    const onSubmit = (data) => {
+    const onBlur = (data) => {
         data.email = user.email;
         data.status = "pending"
         fetch(`https://afternoon-harbor-35453.herokuapp.com/addOrders`, {
@@ -28,7 +28,7 @@ const ProductDetails = () => {
         })
             .then((res) => res.json())
             .then((result) => console.log(result));
-        console.log(data);
+
 
     };
 
@@ -43,15 +43,15 @@ const ProductDetails = () => {
             <div className="pb-5"><Navigation></Navigation></div>
             <div className="details-container">
                 <div className="row container">
-                    <div className="col-md-6">
-
+                    <div className="col-md-6 col-sm-2">
                         <img className="w-50" src={product.image} alt="" />
+                        <h1 className="p-3"  >{product?.name}</h1>
+                        <h4> {product?.price}</h4>
                         <p>{product?.description}</p>
-                        <h1>{product?.name}</h1>
-                        <h1> {product?.price}</h1>
                     </div>
-                    <div className="col-md-6">
-                        <form onSubmit={handleSubmit(onSubmit)}>
+
+                    <div className="col-md-6 col-sm-2">
+                        <form onSubmit={handleSubmit(onBlur)}>
                             <input
                                 {...register("userName")}
                                 placeholder="Client Name"
@@ -70,6 +70,13 @@ const ProductDetails = () => {
                                 {...register("name")}
                                 placeholder="Name"
                                 defaultValue={product?.name}
+                                className="p-2 m-2 w-100 input-field"
+                            />
+                            <input
+                                {...register("Price", { required: true })}
+                                placeholder="Price"
+                                defaultValue=""
+                                type="number"
                                 className="p-2 m-2 w-100 input-field"
                             />
 
@@ -101,6 +108,10 @@ const ProductDetails = () => {
                                 className="btn btn-success w-50"
                             />
                         </form>
+
+                        <div>
+
+                        </div>
                     </div>
                 </div>
             </div>

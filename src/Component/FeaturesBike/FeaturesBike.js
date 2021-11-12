@@ -8,9 +8,8 @@ import image3 from "../../Images/bike-3.png"
 const FeaturesBike = () => {
     return (
         <div className="py-3 container ">
-
             <div className="p-3">
-                <h1>Our Features bike </h1>
+                <h1>Our <span style={{ color: "orange" }} > Best Features </span>Bike </h1>
             </div>
             <Carousel fade>
                 <Carousel.Item>

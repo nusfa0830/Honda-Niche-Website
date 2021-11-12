@@ -1,20 +1,25 @@
 
 import React, { useEffect, useState } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Alert } from 'react-bootstrap';
 import useFirebase from '../../hooks/useFirebase';
 
 
 const MyOrder = () => {
     const [control, setConrol] = useState(false);
     const { user } = useFirebase();
-    const email = user.email;
+
     const [myOrders, setMyorders] = useState();
+    const email = user.email;
+
 
     useEffect(() => {
+
         fetch(`https://afternoon-harbor-35453.herokuapp.com/myOrder/${email}`)
             .then((res) => res.json())
             .then(data => setMyorders(data))
     }, [email])
+
+
 
 
     const handleDelete = (id) => {
@@ -26,8 +31,8 @@ const MyOrder = () => {
             .then(res => res.json())
             .then((data) => {
                 if (data.deletedCount) {
-                    setConrol(!control);
                     alert('Do You Want to Delete?');
+                    setConrol(!control)
                 } else {
                     setConrol(false);
                 }
@@ -43,13 +48,13 @@ const MyOrder = () => {
                 <h1> </h1>
                 <div className="all-products">
                     <div className="row container text-center">
-                        <Table striped bordered hover className="table-responsive table-responsive-sm"  >
+                        <Table striped bordered hover className=" table-responsive-sm"  >
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>User</th>
                                     <th>Product Name</th>
-                                    <th>Price</th>
+                                    <th>Model</th>
                                     <th>Action</th>
 
                                 </tr>
@@ -61,8 +66,10 @@ const MyOrder = () => {
                                         <td>{index}</td>
                                         <td>{pd?.email}</td>
                                         <td>{pd?.name}</td>
-                                        <td>${pd?.price}</td>
-                                        <td><Button onClick={() => handleDelete(pd._id)} variant="danger" >Cancel</Button></td>
+                                        <td>{pd?.model}</td>
+
+                                        <td><Button onClick={() => handleDelete(pd._id)} variant="danger" >Cancel</Button>
+                                        </td>
 
                                     </tr>
                                 </tbody>
@@ -70,6 +77,7 @@ const MyOrder = () => {
                             ))}
                         </Table>
                     </div>
+
                 </div>
             </div>
         </div>

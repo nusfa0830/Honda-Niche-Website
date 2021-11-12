@@ -16,7 +16,7 @@ import Review from './Component/Review/Review';
 import PrivateRoute from './Private/PrivateRoute';
 import AuthProvider from './context/AuthProvider';
 import ProductDetails from './Component/ProductDetails/ProductDetails';
-import Purchase from './Component/Purchase/Purchase';
+
 import Dashboard from './Component/Dashboard/Dashboard';
 
 
@@ -32,9 +32,9 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
-            <Route path="/allproducts/:_id" >
+            <PrivateRoute path="/allproducts/:_id" >
               <ProductDetails></ProductDetails>
-            </Route>
+            </PrivateRoute>
             <PrivateRoute path="/allproducts">
               <Products></Products>
             </PrivateRoute>

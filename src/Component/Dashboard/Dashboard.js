@@ -41,53 +41,57 @@ const Dashboard = () => {
 
                 <div className="dashboard-container  ">
                     <div className="row">
-                        <div className="col-md-3 ">
+                        <div className="col-md-3 col-sm-2 ">
                             <div className="dashboard">
-                                {!isAdmin && (<div>  <h5>Dashboard</h5>
+                                {!isAdmin && (<div className="d-flex flex-column " >
+
                                     <Link to={`${url}`}>
-                                        <li className="dashboard-menu "></li>
+                                        <button type="button" className="mb-3 btn w-75 btn-light dashboard-menu " disabled>Dashboard</button>
                                     </Link>
 
                                     <Link to={`${url}/pay`}>
-                                        <li className="dashboard-menu ">Payment</li>
+                                        <button type="button" className="btn w-75 btn-light dashboard-menu ">Payment</button>
                                     </Link>
 
                                     <Link to={`${url}/myorders`}>
-                                        <li className="dashboard-menu ">My order</li>
+                                        <button type="button" className="btn w-75 btn-light dashboard-menu ">My order</button>
                                     </Link>
 
                                     <Link to={`${url}/review`}>
-                                        <li className="dashboard-menu ">Review</li>
+                                        <button type="button" className="btn w-75 btn-light dashboard-menu ">Review</button>
                                     </Link>
                                 </div>)}
 
-                                {isAdmin && (<div className="admin-dashboard">
-                                    <h5 className="pt-2">Admin Dashboard</h5>
+                                {isAdmin && (<div className="d-flex flex-column">
+                                    <Link to={`${url}`}>
+                                        <button type="button" className="mb-3 btn w-75 btn-light dashboard-menu " disabled>Admin Dashboard</button>
+                                    </Link>
 
                                     <Link to={`${url}/addProduct`}>
-                                        <li className="dashboard-menu">Add Product</li>
+                                        <button type="button" className="btn w-75 btn-light dashboard-menu ">Add Product</button>
                                     </Link>
 
                                     <Link to={`${url}/makeAdmin`}>
-                                        <li className="dashboard-menu">Make Admin</li>
+                                        <button type="button" className="btn w-75 btn-light dashboard-menu ">Make Admin</button>
                                     </Link>
                                     <Link to={`${url}/manageProduct`}>
-                                        <li className="dashboard-menu">Manage Products</li>
+                                        <button type="button" className="btn w-75 btn-light dashboard-menu ">Manage Products</button>
                                     </Link>
                                     <Link to={`${url}/manageOrder`}>
-                                        <li className="dashboard-menu">Manage ALL Orders</li>
+                                        <button type="button" className="btn w-75 btn-light dashboard-menu ">Manage ALL Orders</button>
                                     </Link>
                                 </div>)}
 
 
-                                <div className="pt-3" ><Button onClick={logout} variant="danger">
+                                <div className="my-3" ><Button className="w-75"
+                                    onClick={logout} variant="danger">
 
                                     LogOut
                                 </Button>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-9">
+                        <div className="col-md-9 col-sm-2 switch">
                             <Switch>
                                 <Route exact path={path}>
 

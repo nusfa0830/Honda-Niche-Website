@@ -3,10 +3,12 @@ import "./Navigation.css"
 
 import { NavLink, Link } from "react-router-dom";
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import useFirebase from '../../../hooks/useFirebase';
 
 const Navigation = () => {
-    const { user, signInWithGoogle, logout } = useFirebase();
+    const { user, logout } = useFirebase();
 
     return (
         <div className="pb-5">
@@ -27,45 +29,43 @@ const Navigation = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav link" >
-                        <Nav className="d-flex justify-content-end nav-item dropdown fw-bold  col-10">
+                        <Nav className="d-flex justify-content-end  align-items-end  nav-item dropdown fw-bold  col-10">
+
                             <Nav.Link as={NavLink} to="/home" className="items ">
                                 <li>Home</li>
                             </Nav.Link>
 
-
-                            <Nav.Link as={NavLink} to="/dashboard" className="items">
-                                <li>Dashboard</li>
-                            </Nav.Link>
-
-
-                            <Nav.Link as={NavLink} to="/review" className="items">
-                                <li>review</li>
-                            </Nav.Link>
                             <Nav.Link as={NavLink} to="/allproducts" className="items">
 
-                                <Button className="success text-center px-2 explore  "> Explore
-                                </Button>
+                                Products
+                                <FontAwesomeIcon icon={faSearch} />
+
                             </Nav.Link>
 
 
+
+
+                            {user.email && (<>
+
+
+                                <Nav.Link as={NavLink} to="/dashboard" className="items">
+                                    <li>Dashboard</li>
+                                </Nav.Link>
+                                < Link to="/">
+                                    {user.displayName}
+                                    <Button className="items" onClick={logout} variant="danger">
+
+                                        LogOut
+                                    </Button>
+                                </Link></>
+                            )}
                             <Nav.Link as={NavLink} to="/login">
-                                <Button variant="danger">
+                                <Button className="items" variant="danger">
 
                                     Login
                                 </Button>
 
                             </Nav.Link>
-
-                            {user.email && (
-                                <Link to="/">
-                                    {user.displayName}
-                                    <Button onClick={logout} variant="danger">
-
-                                        LogOut
-                                    </Button>
-                                </Link>
-                            )}
-
                         </Nav>
 
 
@@ -112,7 +112,7 @@ const Navigation = () => {
                     </div>
                 </div>
             </div> */}
-        </div>
+        </div >
     );
 };
 

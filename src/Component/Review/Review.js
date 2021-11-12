@@ -48,7 +48,8 @@ const Review = () => {
                 <input
                     className="input-field my-2"
                     placeholder="Rating"
-                    {...register("Rating", { min: 0, max: 5 })} />
+                    type="number"
+                    {...register("Rating", { min: 0, max: 5, maxLength: 5 })} />
                 <br />
 
                 <input

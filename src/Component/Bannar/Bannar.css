@@ -1,3 +1,8 @@
 .header-bg-color{
     background-color: #151320;
 }
+.purchase:hover{
+background-color: tomato;
+border: none;
+color:white;
+}

@@ -1,6 +1,6 @@
 .dashboard {
     background-color: rgb(143, 109, 109);
-    height: 50vh;
+    height: 2fr;
     color: white;
     cursor: pointer;
   }
@@ -9,5 +9,7 @@
     margin-top: 10px;
   }
   .dashboard-menu:hover {
-    color: cyan;
+   background-color:rgb(243, 93, 38);
+   border: none;
+   color: white;
   }

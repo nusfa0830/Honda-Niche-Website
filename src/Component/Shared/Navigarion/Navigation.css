@@ -3,9 +3,7 @@
 }
 .items {
     list-style: none;
-    margin-right: 30px;
-    font-size: 22px;
-
+    font-size: 18px;
     font-weight: 500;
     color: rgb(252, 242, 242);
     cursor: pointer;

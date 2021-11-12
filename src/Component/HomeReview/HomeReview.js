@@ -23,7 +23,7 @@ const HomeReview = () => {
         <div>
             <div>
                 <div>  <div>
-                    <h1 className="p-2"> Client Review</h1>
+                    <h1 className="p-2"> Client Review  </h1>
                 </div></div>
 
 
@@ -44,6 +44,7 @@ const HomeReview = () => {
 
                                             </div>
                                             <div>
+
                                                 <div className=" d-flex justify-content-center " >
                                                     <div className="star-icon pb-2">
                                                         <FontAwesomeIcon icon={faStar} />

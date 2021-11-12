@@ -27,16 +27,13 @@ const ManageProduct = () => {
             .then(res => res.json())
             .then((data) => {
                 if (data.deletedCount) {
-
                     alert('Do You Want to Delete?');
+                    setConrol(!control)
                 } else {
                     setConrol(false);
                 }
             });
     }
-
-
-
 
     return (
         <div>
@@ -44,13 +41,13 @@ const ManageProduct = () => {
                 <h1> </h1>
                 <div className="all-products">
                     <div className="row container text-center">
-                        <Table striped bordered hover className="table-responsive table-responsive-sm"  >
+                        <Table striped bordered hover className="table-responsive  table-responsive-lg table-responsive-sm table"  >
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>User</th>
                                     <th>Product Name</th>
-                                    <th>Price</th>
+                                    <th>Status</th>
                                     <th>Action</th>
 
                                 </tr>
@@ -62,7 +59,7 @@ const ManageProduct = () => {
                                         <td>{index}</td>
                                         <td>{pd?.email}</td>
                                         <td>{pd?.name}</td>
-                                        <td>${pd?.price}</td>
+                                        <td>{pd?.status}</td>
                                         <td><Button onClick={() => handleDelete(pd._id)} variant="danger" >Cancel</Button></td>
 
                                     </tr>

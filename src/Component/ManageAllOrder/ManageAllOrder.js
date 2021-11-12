@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
 
 const ManageAllOrder = () => {
     const { register, handleSubmit } = useForm();
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState(false);
     const [orderId, setOrderId] = useState("");
 
     const [orders, setOrders] = useState([]);
@@ -24,7 +24,7 @@ const ManageAllOrder = () => {
     };
 
     const onSubmit = (data) => {
-
+        console.log(data)
         fetch(`https://afternoon-harbor-35453.herokuapp.com/statusUpdate/${orderId}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
@@ -34,12 +34,30 @@ const ManageAllOrder = () => {
             .then((result) => console.log(result));
     };
 
+    const handleDelete = (orderId) => {
+        console.log(orderId)
+        fetch(`https://afternoon-harbor-35453.herokuapp.com/allOrders/${orderId}`, {
+            method: "DELETE",
+            headers: { "content-type": "application/json" }
+        })
+            .then(res => res.json())
+            .then((data) => {
+                if (data.deletedCount) {
+                    alert('Do You Want to Delete?');
+                    setStatus(!status)
+                } else {
+                    setStatus(false)
+                }
+            });
+    }
+
+
 
     return (
         <div className="container">
             <h1>All orders {orders.length}</h1>
 
-            <Table striped bordered hover>
+            <Table striped bordered hover >
                 <thead>
                     <tr>
                         <th>#</th>
@@ -55,8 +73,7 @@ const ManageAllOrder = () => {
                         <tr>
                             <td>{index}</td>
                             <td>{pd.name}</td>
-                            <td>{pd.price}</td>
-
+                            <td>{pd.Price} RS </td>
                             <td>
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <select
@@ -73,8 +90,8 @@ const ManageAllOrder = () => {
                                 </form>
                             </td>
 
-                            <button className="btn bg-danger p-2">Delete</button>
-                            <button className="btn bg-success p-2">Update</button>
+                            <td> <Button onClick={() => handleDelete(pd._id)} variant="danger" >Cancel</Button></td>
+
                         </tr>
                     </tbody>
                 ))}
