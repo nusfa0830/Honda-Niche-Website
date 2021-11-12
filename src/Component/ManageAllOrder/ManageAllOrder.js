@@ -11,7 +11,7 @@ const ManageAllOrder = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/allOrders")
+        fetch(`https://afternoon-harbor-35453.herokuapp.com/allOrders`)
             .then((res) => res.json())
             .then((data) => setOrders(data));
     }, []);
@@ -25,7 +25,7 @@ const ManageAllOrder = () => {
 
     const onSubmit = (data) => {
 
-        fetch(`http://localhost:5000/statusUpdate/${orderId}`, {
+        fetch(`https://afternoon-harbor-35453.herokuapp.com/statusUpdate/${orderId}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),

@@ -10,7 +10,7 @@ const ManageProduct = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/allOrders")
+        fetch(`https://afternoon-harbor-35453.herokuapp.com/allOrders`)
             .then((res) => res.json())
             .then((data) => setAllorders(data));
     }, []);
@@ -20,7 +20,7 @@ const ManageProduct = () => {
 
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/allOrders/${id}`, {
+        fetch(`https://afternoon-harbor-35453.herokuapp.com/allOrders/${id}`, {
             method: "DELETE",
             headers: { "content-type": "application/json" }
         })

@@ -11,7 +11,7 @@ const MyOrder = () => {
     const [myOrders, setMyorders] = useState();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myOrder/${email}`)
+        fetch(`https://afternoon-harbor-35453.herokuapp.com/myOrder/${email}`)
             .then((res) => res.json())
             .then(data => setMyorders(data))
     }, [email])
@@ -19,7 +19,7 @@ const MyOrder = () => {
 
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/myOrder/${id}`, {
+        fetch(`https://afternoon-harbor-35453.herokuapp.com/myOrder/${id}`, {
             method: "DELETE",
             headers: { "content-type": "application/json" }
         })
