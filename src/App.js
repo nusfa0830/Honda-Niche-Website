@@ -16,10 +16,9 @@ import Review from './Component/Review/Review';
 import PrivateRoute from './Private/PrivateRoute';
 import AuthProvider from './context/AuthProvider';
 import ProductDetails from './Component/ProductDetails/ProductDetails';
-
 import Dashboard from './Component/Dashboard/Dashboard';
 import Contact from './Component/Contact/Contact';
-import NotFound from './Component/NotFound/NotFound';
+
 
 
 
