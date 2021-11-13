@@ -87,7 +87,7 @@ const Footer = () => {
                         </div>
                         <p className="mt-4 ">
                             <small>
-                                *These statements have not been evaluated by the TRIPO Administration. These SERVICES are intended to
+                                *These statements have not been evaluated by the EXPORSO Administration. These SERVICES are intended to
                                 help .
                             </small>
                         </p>

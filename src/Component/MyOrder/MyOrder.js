@@ -17,7 +17,7 @@ const MyOrder = () => {
         fetch(`https://afternoon-harbor-35453.herokuapp.com/myOrder/${email}`)
             .then((res) => res.json())
             .then(data => setMyorders(data))
-    }, [email])
+    }, [email, myOrders])
 
 
 
@@ -54,6 +54,7 @@ const MyOrder = () => {
                                     <th>No</th>
                                     <th>User</th>
                                     <th>Product Name</th>
+                                    <th>Status</th>
                                     <th>Model</th>
                                     <th>Action</th>
 
@@ -67,6 +68,7 @@ const MyOrder = () => {
                                         <td>{pd?.email}</td>
                                         <td>{pd?.name}</td>
                                         <td>{pd?.model}</td>
+                                        <td>{pd?.status}</td>
 
                                         <td><Button onClick={() => handleDelete(pd._id)} variant="danger" >Cancel</Button>
                                         </td>

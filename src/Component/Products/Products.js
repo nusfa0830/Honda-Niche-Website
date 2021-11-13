@@ -20,31 +20,31 @@ const Products = () => {
 
     return (
         <div>
-            <div className="about-header" >
+            <div className="product-header" >
                 <Navigation></Navigation>
             </div>
             <div className="py-5">
-                <h1 className=" p-2 text-secondary">Ours  Bike Collection</h1>
+                <h1 className="p-3 text-secondary">Bikes Collection</h1>
 
-            </div>
-            <div>
-                <Row xs={1} md={3} className="g-4">
-                    {
-                        products.map((product) => <AllProducts
-                            key={product.key}
-                            product={product}
-                            id={product._id}
-                        >
-                        </AllProducts>)
-                    }
-                </Row>
 
-            </div>
-            <div>
-                <Footer></Footer>
-            </div>
+                <div>
+                    <Row xs={1} md={3} className="g-4">
+                        {
+                            products.map((product) => <AllProducts
+                                key={product.key}
+                                product={product}
+                                id={product._id}
+                            >
+                            </AllProducts>)
+                        }
+                    </Row>
 
-        </div>
+                </div>
+                <div>
+                    <Footer></Footer>
+                </div>
+
+            </div >  </div>
     );
 };
 

@@ -6,15 +6,15 @@ import { Table, Button } from 'react-bootstrap';
 
 const ManageProduct = () => {
     const [allOrders, setAllorders] = useState([]);
-    const [control, setConrol] = useState(false);
+    const [status, setStatus] = useState(false);
 
 
     useEffect(() => {
         fetch(`https://afternoon-harbor-35453.herokuapp.com/allOrders`)
             .then((res) => res.json())
             .then((data) => setAllorders(data));
-    }, []);
-    console.log(allOrders);
+    }, [allOrders]);
+
 
 
 
@@ -28,9 +28,9 @@ const ManageProduct = () => {
             .then((data) => {
                 if (data.deletedCount) {
                     alert('Do You Want to Delete?');
-                    setConrol(!control)
+                    setStatus(!status)
                 } else {
-                    setConrol(false);
+                    setStatus(false);
                 }
             });
     }
@@ -60,7 +60,7 @@ const ManageProduct = () => {
                                         <td>{pd?.email}</td>
                                         <td>{pd?.name}</td>
                                         <td>{pd?.status}</td>
-                                        <td><Button onClick={() => handleDelete(pd._id)} variant="danger" >Cancel</Button></td>
+                                        <td><Button onClick={() => handleDelete(pd._id)} variant="danger" >Delete</Button></td>
 
                                     </tr>
                                 </tbody>

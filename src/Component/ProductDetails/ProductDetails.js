@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth"
 import Navigation from '../Shared/Navigarion/Navigation';
 import { useForm } from "react-hook-form";
 import useFirebase from '../../hooks/useFirebase';
+import { Alert } from 'react-bootstrap';
 
 
 
@@ -15,7 +16,7 @@ const ProductDetails = () => {
     } = useForm();
 
     const { _id } = useParams();
-    const { user } = useFirebase();
+    const { user, isLoading } = useFirebase();
     const [product, setProduct] = useState({});
 
     const onBlur = (data) => {
@@ -36,12 +37,12 @@ const ProductDetails = () => {
         fetch(`https://afternoon-harbor-35453.herokuapp.com/singleProduct/${_id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
-    }, [])
+    }, [product])
 
     return (
         <div>
             <div className="pb-5"><Navigation></Navigation></div>
-            <div className="details-container">
+            <div className="details-container pt-3">
                 <div className="row container">
                     <div className="col-md-6 col-sm-2">
                         <img className="w-50" src={product.image} alt="" />
@@ -107,9 +108,17 @@ const ProductDetails = () => {
                                 value="Order now"
                                 className="btn btn-success w-50"
                             />
+
+                            <div class="col-auto">
+                                <span id="passwordHelpInline" class="form-text">
+                                    You can see your orders in dashboard. Please visit Dashboard
+                                </span>
+                            </div>
+
                         </form>
 
                         <div>
+
 
                         </div>
                     </div>

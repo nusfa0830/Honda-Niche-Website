@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import AllProducts from '../AllProducts/AllProducts';
+
 import 'animate.css';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { Button, Row, Spinner } from 'react-bootstrap';
 import useFirebase from '../../hooks/useFirebase';
+
 const HomeProducts = () => {
     const [services, setServices] = useState([]);
     const { user, isLoading } = useFirebase();
@@ -47,9 +50,9 @@ const HomeProducts = () => {
                                         <div>
 
 
-                                            <h6 className="text-primary" > Price: {service.price}</h6>
+                                            <h6 className="text-primary" > {service.price}</h6>
                                             <h6 className="text-secondary" >  {service.miles}</h6>
-                                            <h6 className="text-secondary" > Review: {service.reviews}</h6>
+                                            <h6 className="text-secondary" ><FontAwesomeIcon icon={faUser} /> {service.reviews} preson  </h6>
                                         </div>
 
                                         <div className="pb-2">

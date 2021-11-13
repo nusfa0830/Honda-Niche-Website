@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import useFirebase from "../../hooks/useFirebase";
 
 
 const ManageAllOrder = () => {
     const { register, handleSubmit } = useForm();
     const [status, setStatus] = useState(false);
     const [orderId, setOrderId] = useState("");
-
+    const { user } = useFirebase();
     const [orders, setOrders] = useState([]);
-
+    const userName = user.displayName;
     useEffect(() => {
         fetch(`https://afternoon-harbor-35453.herokuapp.com/allOrders`)
             .then((res) => res.json())
@@ -55,16 +56,18 @@ const ManageAllOrder = () => {
 
     return (
         <div className="container">
-            <h1>All orders {orders.length}</h1>
+            <h1>Total Orders {orders.length}</h1>
 
             <Table striped bordered hover >
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>NO</th>
+                        <th>Client Name</th>
                         <th>Product Name</th>
                         <th>Price</th>
 
-                        <th>Status</th>
+
+                        <th>Update Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -72,6 +75,7 @@ const ManageAllOrder = () => {
                     <tbody>
                         <tr>
                             <td>{index}</td>
+                            <td>{pd.userName}</td>
                             <td>{pd.name}</td>
                             <td>{pd.Price} RS </td>
                             <td>

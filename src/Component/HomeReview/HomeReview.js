@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import Rating from 'react-rating';
+import "./HomeReview.css";
 
 
 
@@ -40,20 +40,18 @@ const HomeReview = () => {
 
                                                 <p className="card-text p-2">{review.comments}</p>
 
-                                                <h3 className="card-title pb-3">{review.name}</h3>
+                                                <h3 className="card-title pb-2">{review.name}</h3>
 
                                             </div>
-                                            <div>
+                                            <div className="pb-2">
+                                                <Rating
+                                                    initialRating={review.Rating}
+                                                    emptySymbol="far fa-star icon-color "
+                                                    fullSymbol="fas fa-star icon-color"
+                                                    readonly    >
+                                                </Rating>
 
-                                                <div className=" d-flex justify-content-center " >
-                                                    <div className="star-icon pb-2">
-                                                        <FontAwesomeIcon icon={faStar} />
-                                                        <FontAwesomeIcon icon={faStar} />
-                                                        <FontAwesomeIcon icon={faStar} />
-                                                        <FontAwesomeIcon icon={faStar} />
-                                                        <FontAwesomeIcon icon={faStar} />
-                                                    </div>
-                                                </div>
+
 
 
 

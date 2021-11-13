@@ -9,8 +9,6 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
-    // const [admin, setAdmin] = useState(false);
-    const [token, setToken] = useState('')
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
 
@@ -57,21 +55,6 @@ const useFirebase = () => {
             .then((res) => res.json())
             .then((result) => console.log(result));
     };
-
-
-
-
-
-    // const handleUserRegister = (email, password) => {
-    //     createUserWithEmailAndPassword(auth, email, password)
-    //         .then((result) => {
-    //             console.log(result.user);
-
-    //         })
-    //         .catch((error) => {
-    //             const errorMessage = error.message;
-    //         });
-    // };
 
 
 
@@ -123,7 +106,6 @@ const useFirebase = () => {
 
                 const user = result.user;
 
-
                 // saveUser(user.email, user.displayName, 'PUT')
                 // ...      
                 setAuthError('');
@@ -145,9 +127,6 @@ const useFirebase = () => {
     // observer user state
 
 
-
-
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -165,17 +144,6 @@ const useFirebase = () => {
 
 
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/users/${user.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setAdmin(data.admin))
-
-    // }, [user.email])
-
-
-
-
-
 
 
 
@@ -189,24 +157,12 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
-    // const saveUser = (email, displayName, method) => {
-    //     const user = { email, displayName };
-    //     fetch('http://localhost:5000/users', {
-    //         method: method,
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
 
-    //     })
-    //         .then()
-
-    // }
 
     return {
         user,
 
-        token,
+
         isLoading,
         setIsLoading,
         registerUser,

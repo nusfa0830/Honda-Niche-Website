@@ -3,15 +3,16 @@
 }
 .items {
     list-style: none;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
-    color: rgb(252, 242, 242);
+    color: black;
+    margin-right: 10px;
     cursor: pointer;
     padding: 5px;
     text-decoration: none;
   }
   .items:hover {
-    color: black;
+    color: rgb(252, 242, 242);
   }
   .explore  {
     background-color: rgba(255, 68, 0, 0.637) ;

@@ -49,7 +49,13 @@ const Review = () => {
                     className="input-field my-2"
                     placeholder="Rating"
                     type="number"
-                    {...register("Rating", { min: 0, max: 5, maxLength: 5 })} />
+                    {...register("Rating", { min: 0, max: 5, maxLength: { value: 5, message: { errors } } })} />
+                <div class="col-auto">
+                    <span id="passwordHelpInline" class="form-text">
+                        Rating Must be 0-5 in numbers .
+                    </span>
+                </div>
+
                 <br />
 
                 <input

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+
 
 const AllProducts = (props) => {
 
@@ -24,13 +26,13 @@ const AllProducts = (props) => {
                             <div>
 
 
-                                <h6 className="text-primary" > Price:  {price}</h6>
+                                <h6 className="text-primary" >   {price}</h6>
                                 <h6 className="text-secondary" >  {miles}</h6>
-                                <h6 className="text-secondary" > Review : {reviews}</h6>
+                                <h6 className="text-secondary" > <FontAwesomeIcon icon={faUser} /> {reviews} person </h6>
                             </div>
 
                             <div className="pb-2">
-                                <Link to={`/allproducts/${_id}`}>    <Button className="btn-  ">Order NOW</Button>
+                                <Link to={`/allproducts/${_id}`}>    <Button variant="success" >Order Now</Button>
                                 </Link>
                             </div>
                         </div>
