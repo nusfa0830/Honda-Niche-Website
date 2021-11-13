@@ -69,7 +69,7 @@ const Footer = () => {
                 <div className="row">
                     <div className="col-md-5">
                         <div className="text-start">
-                            <h1>EXPERSO</h1>
+                            <h1>EXPORSO</h1>
                             <div className="icons-container d-flex text-center ">
                                 <div className="icon">
 
