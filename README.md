@@ -1,5 +1,5 @@
 # live site-"https://bike-website-8a710.web.app/"
-# website name is -"Experso"
+# website name is -"Exporso"
 # This is a Bike Selling website
 # This website has a collection of various kind of bikes
 # website has showcase some best features bikes

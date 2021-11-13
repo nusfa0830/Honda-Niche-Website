@@ -19,6 +19,7 @@ import ProductDetails from './Component/ProductDetails/ProductDetails';
 
 import Dashboard from './Component/Dashboard/Dashboard';
 import Contact from './Component/Contact/Contact';
+import NotFound from './Component/NotFound/NotFound';
 
 
 
@@ -46,7 +47,8 @@ function App() {
             <Route path="/contact">
               <Contact></Contact>
             </Route>
-            <Route path="/login">
+
+            <Route exact path="/login">
               <LogIn></LogIn>
             </Route>
             <Route path="/register">
