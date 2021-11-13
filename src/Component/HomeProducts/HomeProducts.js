@@ -10,13 +10,13 @@ import useFirebase from '../../hooks/useFirebase';
 const HomeProducts = () => {
     const [services, setServices] = useState([]);
     const { user, isLoading } = useFirebase();
+
     useEffect(() => {
         fetch(`https://afternoon-harbor-35453.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setServices(data))
 
     }, []);
-
 
     if (isLoading === true) {
         return (
@@ -25,6 +25,10 @@ const HomeProducts = () => {
             </div>
         );
     }
+
+
+
+
     return (
         <div>
             <div> <div>
