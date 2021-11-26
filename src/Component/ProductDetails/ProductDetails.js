@@ -20,6 +20,7 @@ const ProductDetails = () => {
     const [product, setProduct] = useState({});
 
     const onBlur = (data) => {
+
         data.email = user.email;
         data.status = "pending"
         fetch(`https://afternoon-harbor-35453.herokuapp.com/addOrders`, {

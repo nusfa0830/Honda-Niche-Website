@@ -28,7 +28,7 @@ const ManageProduct = () => {
             .then((data) => {
                 if (data.deletedCount) {
                     alert('Do You Want to Delete?');
-                    setStatus(!status)
+
                 } else {
                     setStatus(false);
                 }
