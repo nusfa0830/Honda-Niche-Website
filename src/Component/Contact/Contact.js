@@ -15,10 +15,10 @@ const Contact = () => {
 
 
             <div><div className="row  d-flex align-items-center rounded-3 bg-secondary   " id="subscribe">
-                <div className="col-md-6 col-sm-6 " >
+                <div className="col-md-4 col-sm-2 container " >
                     <h1>LET'S STAY IN TOUCH</h1>
                     <p>Get update on sales, specials and more</p>
-                    <input className="form-control mx-5  " type="text" placeholder="Your Email" />
+                    <input className="form-control mx-3  " type="text" placeholder="Your Email" />
                     <br />
                     <Button variant="light">Submit</Button>
                 </div>

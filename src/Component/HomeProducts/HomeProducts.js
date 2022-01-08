@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { Button, Row, Spinner } from 'react-bootstrap';
 import useFirebase from '../../hooks/useFirebase';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
+
 
 const HomeProducts = () => {
     const [services, setServices] = useState([]);
@@ -30,7 +34,7 @@ const HomeProducts = () => {
 
 
     return (
-        <div>
+        <div >
             <div> <div>
             </div>
                 <div>
@@ -41,7 +45,8 @@ const HomeProducts = () => {
                 {
                     services.slice(0, 6).map(service =>
                         <div key={service.key}>
-                            <div className="">
+                            <div data-aos="fade-up"
+                                data-aos-duration="3000" className="">
                                 <div className="col pb-5">
                                     <div className="shadow-lg border-0 rounded h-100  ">
                                         <img className="card-img-top image img-fluid p-2 " src={service.image} alt="..." />

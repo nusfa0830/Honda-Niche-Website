@@ -3,7 +3,9 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 const AllProducts = (props) => {
 
@@ -12,7 +14,9 @@ const AllProducts = (props) => {
     const { name, description, price, image, _id, miles, reviews } = props.product;
 
     return (
-        <div>
+        <div data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="1500">
             <div>
                 <div className="">
                     <div className="col pb-5">

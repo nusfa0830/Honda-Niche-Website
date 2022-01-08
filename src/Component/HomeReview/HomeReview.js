@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import Rating from 'react-rating';
 import "./HomeReview.css";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 
 
@@ -20,7 +22,9 @@ const HomeReview = () => {
 
 
     return (
-        <div>
+        <div data-aos="zoom-in"
+            data-aos-easing="linear"
+            data-aos-duration="1500">
             <div>
                 <div>  <div>
                     <h1 className="p-2"> Client Review  </h1>
